@@ -15,11 +15,6 @@ def setup_caches(sender: Any, **kwargs: Any) -> None:
     configure_caches()
 
 
-@celery.task
-def hello_world() -> None:
-    logger.info("Hello World!")
-
-
 @celery.on_after_finalize.connect
 def setup_periodic_tasks(sender: Any, **kwargs: Any) -> None:
     logger.info("Enabling Test Task")

@@ -42,11 +42,5 @@ def version() -> None:
 
     typer.echo(f"{settings.project_name} - {__version__}")
 
-
-@app.command(help="Display a friendly greeting.")
-def hello() -> None:
-    typer.echo(f"Hello from {settings.project_name}!")
-
-
 if __name__ == "__main__":
     app()

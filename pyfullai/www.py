@@ -5,7 +5,6 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
-from pyfullai.routes import hello
 from pyfullai.services.cache import configure_caches
 
 
@@ -19,8 +18,6 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
 
 
 app = FastAPI(lifespan=lifespan)
-
-app.include_router(hello.router)
 
 static_file_path = os.path.dirname(os.path.realpath(__file__)) + "/static"
 app.mount("/static", StaticFiles(directory=static_file_path), name="static")
